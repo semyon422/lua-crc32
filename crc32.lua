@@ -13,11 +13,9 @@ local crc32 = {}
 
 function crc32.hash(s)
 	local crc = 0xFFFFFFFF
-
 	for i = 1, s:len() do
 		crc = bit.bxor(crc32_table[bit.band(bit.bxor(crc, s:byte(i)), 0xFF) + 1], bit.rshift(crc, 8))
 	end
-
 	return bit.bxor(crc, 0xFFFFFFFF)
 end
 
